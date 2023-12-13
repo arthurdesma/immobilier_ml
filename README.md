@@ -1,92 +1,62 @@
-\documentclass{article}
-\usepackage[utf8]{inputenc}
-\usepackage{graphicx}
-\usepackage{hyperref}
-\usepackage{amsmath}
-\usepackage{listings}
-\usepackage{xcolor}
+# Real Estate Data Analysis
 
-\lstset{
-    basicstyle=\ttfamily,
-    columns=fullflexible,
-    breaklines=true,
-    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
-}
+## Overview
+This Python script analyzes real estate transaction data for the year 2022. It focuses on cleaning, processing, and analyzing the data to extract meaningful insights.
 
-\title{README: Real Estate Data Analysis}
-\author{}
-\date{}
+## Libraries Used
+- `pandas`: For data manipulation and analysis.
+- `numpy`: For numerical operations.
+- `matplotlib.pyplot`: For plotting graphs.
+- `seaborn`: For advanced data visualization.
+- `sklearn`: For machine learning and data preprocessing.
 
-\begin{document}
+## Data Loading and Preprocessing
+1. **Load Data**: The data is loaded from a CSV file using `pandas.read_csv` with a predefined data type dictionary (`dtype_dict`) for proper type casting.
 
-\maketitle
+2. **Data Cleaning**:
+   - Drop rows with missing values in 'longitude' and 'latitude'.
+   - Remove duplicate entries.
 
-\section*{Overview}
-This Python script is designed for analyzing real estate transaction data for the year 2022. It focuses on cleaning, processing, and analyzing the data to extract meaningful insights.
+3. **Data Inspection**: Use `data.info()` to inspect the data structure.
 
-\section*{Libraries Used}
-\begin{itemize}
-    \item \texttt{pandas}: For data manipulation and analysis.
-    \item \texttt{numpy}: For numerical operations.
-    \item \texttt{matplotlib.pyplot}: For plotting graphs.
-    \item \texttt{seaborn}: For advanced data visualization.
-    \item \texttt{sklearn}: For machine learning and data preprocessing.
-\end{itemize}
+4. **Data Filtering and Transformation**:
+   - Filter the data based on specific criteria (e.g., nature of mutation, number of lots, etc.).
+   - Replace certain department codes.
+   - Drop unnecessary columns.
+   - Convert data types and handle missing values.
+   - Add new calculated columns (e.g., 'Prix_m').
 
-\section*{Data Loading and Preprocessing}
-\subsection*{Load Data}
-The data is loaded from a CSV file using \texttt{pandas.read\_csv} with a predefined data type dictionary (\texttt{dtype\_dict}) to ensure proper type casting.
+5. **Outlier Detection and Removal**: Apply custom functions to filter out outliers based on statistical measures.
 
-\subsection*{Data Cleaning}
-\begin{itemize}
-    \item Drop rows with missing values in specific columns.
-    \item Remove duplicates.
-    \item Replace specific department codes for consistency.
-    \item Drop unnecessary columns.
-\end{itemize}
+6. **Data Aggregation**: Use `pivot_table` to summarize data.
 
-\subsection*{Data Transformation}
-\begin{itemize}
-    \item Convert latitude and longitude to radians.
-    \item Fill NA values in 'surface\_terrain'.
-    \item Replace commas with periods in 'valeur\_fonciere' and convert to float.
-    \item Calculate and round off 'Prix\_m'.
-\end{itemize}
+7. **Data Segmentation**: Separate data into different categories based on property type and nature of mutation.
 
-\section*{Data Analysis}
-\subsection*{Filtering and Grouping}
-\begin{itemize}
-    \item Filter data based on certain conditions.
-    \item Group data by department code and apply specific filters.
-\end{itemize}
+## Data Analysis and Visualization
+1. **Histogram Creation**: Plot a histogram to visualize the distribution of 'Prix_m'.
 
-\subsection*{Statistical Analysis}
-\begin{itemize}
-    \item Pivot tables to analyze sales types and property types.
-    \item Generate histograms to visualize data distribution.
-\end{itemize}
+2. **Data Sorting**: Sort the data to identify top entries based on specific criteria.
 
-\section*{Machine Learning}
-\subsection*{Data Preparation for ML}
-\begin{itemize}
-    \item One-hot encode categorical variables.
-    \item Standardize features using \texttt{StandardScaler}.
-    \item Split data into training and test sets.
-\end{itemize}
+3. **Creating a BallTree Model**: Implement a BallTree model for geospatial data analysis.
 
-\subsection*{Model Training}
-\begin{itemize}
-    \item Train a RandomForestRegressor model.
-    \item Evaluate model performance using MSE, MAE, and R-squared metrics.
-\end{itemize}
+4. **Data Exporting**: Save processed data to external files.
 
-\subsection*{Error Analysis}
-\begin{itemize}
-    \item Identify high-error predictions.
-    \item Analyze and visualize error distribution.
-\end{itemize}
+5. **Error Analysis**:
+   - Predict values using a RandomForestRegressor.
+   - Analyze and visualize prediction errors.
 
-\section*{Conclusion}
-This script provides a comprehensive approach to analyzing real estate data, leveraging various data manipulation, visualization, and machine learning techniques.
+6. **Performance Metrics Calculation**: Calculate and display metrics like MSE, MAE, and R2 Score.
 
-\end{document}
+7. **Error Analysis (Extended)**:
+   - Identify high-error instances.
+   - Perform detailed analysis on these instances.
+   - Export findings to Excel for further examination.
+
+8. **Graphical Analysis**: Visualize error distributions and other key insights using matplotlib.
+
+## Conclusion
+This script offers a comprehensive approach to real estate data analysis, utilizing various data processing techniques and machine learning for insightful analysis.
+
+---
+
+For further modifications or specific use cases, adapt the code and steps as required for your dataset and analysis goals.
